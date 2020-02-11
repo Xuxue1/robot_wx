@@ -88,7 +88,7 @@ public class RequestMessage {
                 "  <FromUserName><![CDATA["+getToUserName()+"]]></FromUserName>\n" +
                 "  <CreateTime>"+(System.currentTimeMillis() / 1000 )+"</CreateTime>\n" +
                 "  <MsgType><![CDATA[text]]></MsgType>\n" +
-                "  <Content><![CDATA["+getContent()+"]]></Content>\n" +
+                "  <Content><![CDATA[回复:\t"+getContent()+"]]></Content>\n" +
                 "</xml>\n";
     }
 }
