@@ -1,0 +1,20 @@
+server:
+  port: 80
+spring:
+  application:
+    name: app    # 项目名称尽量用小写
+  aop:
+    auto: true
+    proxy-target-class: false
+
+logging:
+  level:
+    root: INFO
+    com.chinaoly: DEBUG
+    org.hibernate: INFO
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+    org.hibernate.type.descriptor.sql.BasicExtractor: TRACE
+    com.itmuch.youran.persistence: ERROR
+app:
+  id: wxc210c7072c5517db
+  secret: be56ae5ec334da8d14f28644b44a054b
