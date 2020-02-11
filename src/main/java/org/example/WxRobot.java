@@ -6,9 +6,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 @RestController
@@ -28,7 +26,7 @@ public class WxRobot {
     }
 
     @RequestMapping(value = "response", method = RequestMethod.POST)
-    public String res(String xml) {
+    public String res(@RequestBody String xml) {
         LOG.info(xml);
         return xml;
     }
