@@ -21,7 +21,7 @@ public class WxRobot {
 
     @RequestMapping(value = "response", method = RequestMethod.GET)
     public String response(String signature, String timestamp, String nonce, String echostr) {
-        return "{\"status\":\"ok\"}";
+        return echostr;
     }
 
 
