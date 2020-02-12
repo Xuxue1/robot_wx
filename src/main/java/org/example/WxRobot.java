@@ -96,7 +96,7 @@ public class WxRobot {
             Thread.sleep(2000);
             return msg.createResponse("需要教材电子版的话，看看咱们链接里的方法，能不能找到呀。");
         }
-        return msg.createResponse("");
+        return "";
     }
 
 
