@@ -5,6 +5,7 @@ import com.google.gson.Gson;
 import org.example.mode.MenuClickMessage;
 import org.example.mode.MessageStore;
 import org.example.mode.RequestMessage;
+import org.example.mode.SubscribeMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
@@ -48,6 +49,9 @@ public class WxRobot {
             } else {
                 return "";
             }
+        } else if (xml.contains("<Event><![CDATA[subscribe]]></Event>")) {
+            SubscribeMessage subscribeMessage = new SubscribeMessage(xml);
+            return subscribeMessage.getResponse();
         } else {
             RequestMessage msg = new RequestMessage(xml);
             for(String regex : MessageStore.keywordResponse.keySet()) {
