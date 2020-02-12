@@ -43,8 +43,8 @@ public class WxRobot {
             MenuClickMessage msg = new MenuClickMessage(xml);
             LOG.info(G.toJson(msg));
             String key = msg.getEventKey();
-            if (MessageStore.keywordResponse.containsKey(key)) {
-                return msg.createResponse(MessageStore.keywordResponse.get(key));
+            if (MessageStore.meuResponse.containsKey(key)) {
+                return msg.createResponse(MessageStore.meuResponse.get(key));
             } else {
                 return "";
             }

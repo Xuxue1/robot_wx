@@ -84,7 +84,7 @@ public class MenuClickMessage {
                 "  <FromUserName><![CDATA["+getToUserName()+"]]></FromUserName>\n" +
                 "  <CreateTime>"+(System.currentTimeMillis() / 1000 )+"</CreateTime>\n" +
                 "  <MsgType><![CDATA[text]]></MsgType>\n" +
-                "  <Content><![CDATA[回复:\t"+ msg +"]]></Content>\n" +
+                "  <Content><![CDATA["+ msg +"]]></Content>\n" +
                 "</xml>\n";
     }
 }
