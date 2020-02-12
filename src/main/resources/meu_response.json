@@ -1,0 +1,10 @@
+[
+  {
+    "key" : "V1001_TODAY_MUSIC",
+    "response": "你点击了今日识曲 \n 稍后给你回复啊"
+  },
+  {
+    "key" : "V1001_GOOD",
+    "response": "你点击了点赞接口\n 谢谢!"
+  }
+]
