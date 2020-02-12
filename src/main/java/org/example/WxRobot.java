@@ -40,6 +40,10 @@ public class WxRobot {
     @RequestMapping(value = "response", method = RequestMethod.POST)
     public String res(@RequestBody String xml) {
         LOG.info(xml);
+        if (xml.contains("<Event><![CDATA[subscribe]]></Event>")) {
+            SubscribeMessage subscribeMessage = new SubscribeMessage(xml);
+            return subscribeMessage.getResponse();
+        }
         if (xml.contains("<EventKey>")) {
             MenuClickMessage msg = new MenuClickMessage(xml);
             LOG.info(G.toJson(msg));
@@ -49,19 +53,15 @@ public class WxRobot {
             } else {
                 return "";
             }
-        } else if (xml.contains("<Event><![CDATA[subscribe]]></Event>")) {
-            SubscribeMessage subscribeMessage = new SubscribeMessage(xml);
-            return subscribeMessage.getResponse();
-        } else {
-            RequestMessage msg = new RequestMessage(xml);
-            for(String regex : MessageStore.keywordResponse.keySet()) {
-                if (msg.getContent().matches(regex)) {
-                    return msg.createResponse(MessageStore.keywordResponse.get(regex));
-                }
-            }
-            LOG.info(G.toJson(msg));
-            return msg.createResponse("你发的消息是" + msg.getContent());
         }
+        RequestMessage msg = new RequestMessage(xml);
+        for(String regex : MessageStore.keywordResponse.keySet()) {
+            if (msg.getContent().matches(regex)) {
+                return msg.createResponse(MessageStore.keywordResponse.get(regex));
+            }
+        }
+        LOG.info(G.toJson(msg));
+        return msg.createResponse("你发的消息是" + msg.getContent());
     }
 
 
