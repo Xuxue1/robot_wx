@@ -1,6 +1,14 @@
 [
   {
-    "key" : ".*?你好.*?",
-    "response" : "你也好"
+    "key" : ".*?大学教材.*?",
+    "response" : "https://mp.weixin.qq.com/s/T7ol72aZHHrXRluWXm5srA"
+  },
+  {
+    "key" : ".*?大学课本.*?",
+    "response" : "https://mp.weixin.qq.com/s/T7ol72aZHHrXRluWXm5srA"
+  },
+  {
+    "key" : ".*?免费电子书.*?",
+    "response" : "https://mp.weixin.qq.com/s/T7ol72aZHHrXRluWXm5srA"
   }
 ]

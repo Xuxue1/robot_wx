@@ -10,6 +10,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.*;
+import java.util.HashSet;
+import java.util.Set;
+
 
 @RestController
 @RequestMapping("/api")
@@ -18,7 +22,19 @@ public class WxRobot {
 
     private static final Gson G = new Gson();
 
+    private static Set<String> users = new HashSet<>();
+
     static {
+        try {
+            FileInputStream inputStream = new FileInputStream("users");
+            ObjectInputStream in = new ObjectInputStream(inputStream);
+            in.close();
+            inputStream.close();
+            users = (Set<String>) in.readObject();
+        } catch (Exception e) {
+            LOG.warn(e.getMessage());
+        }
+
         try {
             AccessToken.start();
             Thread.sleep(5000);
@@ -31,6 +47,19 @@ public class WxRobot {
         }
     }
 
+    public static void addUser(String key) {
+        try {
+            users.add(key);
+            FileOutputStream outputStream = new FileOutputStream("users");
+            ObjectOutputStream out = new ObjectOutputStream(outputStream);
+            out.writeObject(users);
+            outputStream.close();
+            out.close();
+        } catch (Exception ex) {
+            LOG.warn(ex.getMessage());
+        }
+    }
+
 
     @RequestMapping(value = "response", method = RequestMethod.GET)
     public String response(String signature, String timestamp, String nonce, String echostr) {
@@ -38,7 +67,7 @@ public class WxRobot {
     }
 
     @RequestMapping(value = "response", method = RequestMethod.POST)
-    public String res(@RequestBody String xml) {
+    public String res(@RequestBody String xml) throws Exception{
         LOG.info(xml);
         if (xml.contains("<Event><![CDATA[subscribe]]></Event>")) {
             SubscribeMessage subscribeMessage = new SubscribeMessage(xml);
@@ -55,13 +84,19 @@ public class WxRobot {
             }
         }
         RequestMessage msg = new RequestMessage(xml);
-        for(String regex : MessageStore.keywordResponse.keySet()) {
-            if (msg.getContent().matches(regex)) {
-                return msg.createResponse(MessageStore.keywordResponse.get(regex));
+        String user = msg.getFromUserName();
+        if (users.contains(user)) {
+            for(String regex : MessageStore.keywordResponse.keySet()) {
+                if (msg.getContent().matches(regex)) {
+                    return msg.createResponse(MessageStore.keywordResponse.get(regex));
+                }
             }
+        } else {
+            addUser(user);
+            Thread.sleep(2000);
+            return msg.createResponse("需要教材电子版的话，看看咱们链接里的方法，能不能找到呀。");
         }
-        LOG.info(G.toJson(msg));
-        return msg.createResponse("你发的消息是" + msg.getContent());
+        return msg.createResponse("");
     }
 
 
