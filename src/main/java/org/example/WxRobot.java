@@ -3,10 +3,10 @@ package org.example;
 
 import com.google.gson.Gson;
 import org.example.mode.MenuClickMessage;
+import org.example.mode.MessageStore;
 import org.example.mode.RequestMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -42,9 +42,19 @@ public class WxRobot {
         if (xml.contains("<EventKey>")) {
             MenuClickMessage msg = new MenuClickMessage(xml);
             LOG.info(G.toJson(msg));
-            return msg.createResponse("你点击了" + msg.getEventKey());
+            String key = msg.getEventKey();
+            if (MessageStore.keywordResponse.containsKey(key)) {
+                return msg.createResponse(MessageStore.keywordResponse.get(key));
+            } else {
+                return "";
+            }
         } else {
             RequestMessage msg = new RequestMessage(xml);
+            for(String regex : MessageStore.keywordResponse.keySet()) {
+                if (msg.getContent().matches(regex)) {
+                    return msg.createResponse(MessageStore.keywordResponse.get(regex));
+                }
+            }
             LOG.info(G.toJson(msg));
             return msg.createResponse("你发的消息是" + msg.getContent());
         }
