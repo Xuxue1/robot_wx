@@ -46,7 +46,7 @@ public class WxRobot {
         } else {
             RequestMessage msg = new RequestMessage(xml);
             LOG.info(G.toJson(msg));
-            return msg.revertMsg();
+            return msg.createResponse("你发的消息是" + msg.getContent());
         }
     }
 
