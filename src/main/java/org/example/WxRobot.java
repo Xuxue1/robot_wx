@@ -38,6 +38,7 @@ public class WxRobot {
 
     @RequestMapping(value = "response", method = RequestMethod.POST)
     public String res(@RequestBody String xml) {
+        LOG.info(xml);
         if (xml.matches("<Event><!\\[CDATA\\[.*?\\]\\]></Event>")) {
             MenuClickMessage msg = new MenuClickMessage(xml);
             LOG.info(G.toJson(msg));
