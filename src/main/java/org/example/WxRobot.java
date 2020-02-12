@@ -42,7 +42,7 @@ public class WxRobot {
         if (xml.contains("<EventKey>")) {
             MenuClickMessage msg = new MenuClickMessage(xml);
             LOG.info(G.toJson(msg));
-            return "";
+            return msg.createResponse("你点击了" + msg.getEventKey());
         } else {
             RequestMessage msg = new RequestMessage(xml);
             LOG.info(G.toJson(msg));
