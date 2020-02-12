@@ -31,10 +31,6 @@ public class WxRobot {
     }
 
 
-    @Autowired
-    private Config config;
-
-
     @RequestMapping(value = "response", method = RequestMethod.GET)
     public String response(String signature, String timestamp, String nonce, String echostr) {
         return echostr;
