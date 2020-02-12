@@ -91,4 +91,14 @@ public class RequestMessage {
                 "  <Content><![CDATA[回复:\t"+getContent()+"]]></Content>\n" +
                 "</xml>\n";
     }
+
+    public String createResponse(String msg) {
+        return "<xml>\n" +
+                "  <ToUserName><![CDATA["+getFromUserName()+"]]></ToUserName>\n" +
+                "  <FromUserName><![CDATA["+getToUserName()+"]]></FromUserName>\n" +
+                "  <CreateTime>"+(System.currentTimeMillis() / 1000 )+"</CreateTime>\n" +
+                "  <MsgType><![CDATA[text]]></MsgType>\n" +
+                "  <Content><![CDATA[回复:\t"+ msg +"]]></Content>\n" +
+                "</xml>\n";
+    }
 }
