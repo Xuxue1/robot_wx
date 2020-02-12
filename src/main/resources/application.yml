@@ -15,6 +15,3 @@ logging:
     org.hibernate.type.descriptor.sql.BasicBinder: TRACE
     org.hibernate.type.descriptor.sql.BasicExtractor: TRACE
     com.itmuch.youran.persistence: ERROR
-app:
-  id: wxc210c7072c5517db
-  secret: be56ae5ec334da8d14f28644b44a054b
