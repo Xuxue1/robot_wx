@@ -10,5 +10,9 @@
   {
     "key" : ".*?免费电子书.*?",
     "response" : "https://mp.weixin.qq.com/s/T7ol72aZHHrXRluWXm5srA"
+  },
+  {
+    "key" : ".*?思政.*?",
+    "response" : "218套简历模板合集\n链接: https://pan.baidu.com/s/1YoScLRBstBr43R_goKmbaw 提取码: nddr"
   }
 ]
