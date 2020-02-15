@@ -31,6 +31,7 @@ public class WxRobot {
             in.close();
             inputStream.close();
             users = (Set<String>) in.readObject();
+            LOG.info("Reade users {}", users);
         } catch (Exception e) {
             LOG.warn(e.getMessage());
         }
