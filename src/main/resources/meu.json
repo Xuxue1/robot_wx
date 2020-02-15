@@ -25,11 +25,6 @@
         },
         {
           "type":"view",
-          "name":"电气电子",
-          "url":"https://mp.weixin.qq.com/s/aVqBCP6pkq9nu33vqpJZDQ"
-        },
-        {
-          "type":"view",
           "name":"其它答案",
           "url":"https://mp.weixin.qq.com/s/bhmT7BfSToA_S5btEkWeAg"
         }
@@ -38,7 +33,7 @@
     {
       "type":"view",
       "name":"大学课本",
-      "key":"https://mp.weixin.qq.com/s/J95beHEQHAwQ6U2l8XwfHA"
+      "url":"https://mp.weixin.qq.com/s/J95beHEQHAwQ6U2l8XwfHA"
     },
     {
       "name":"考试资料",
@@ -58,5 +53,6 @@
           "name":"二级",
           "key":"V1003"
         }]
-    }]
+    }
+  ]
 }
