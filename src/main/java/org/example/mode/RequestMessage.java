@@ -101,4 +101,22 @@ public class RequestMessage {
                 "  <Content><![CDATA["+ msg +"]]></Content>\n" +
                 "</xml>\n";
     }
+
+    public String createDefaultMessage() {
+        return "<xml>\n" +
+                "  <ToUserName><![CDATA["+getFromUserName()+"]]></ToUserName>\n" +
+                "  <FromUserName><![CDATA["+getToUserName()+"]]></FromUserName>\n" +
+                "  <CreateTime>"+(System.currentTimeMillis() / 1000 )+"</CreateTime>\n" +
+                "  <MsgType><![CDATA[news]]></MsgType>\n" +
+                "  <ArticleCount>1</ArticleCount>\n" +
+                "  <Articles>\n" +
+                "    <item>\n" +
+                "      <Title><![CDATA[（2.12 更新）知乎热门：免费大学教材 PDF 哪里找？]]></Title>\n" +
+                "      <Description><![CDATA[快开学了，各种资料答案走起~]]></Description>\n" +
+                "      <PicUrl><![CDATA[http://mmbiz.qpic.cn/mmbiz_jpg/TS8rulAuOdKFq1HV4FkXkWE731UKq922h3Qqt0UpIWyr6rDauyfOwOu9JVPOjzXp3I0vZmLsrrgBuvNcbK0TFg/0?wx_fmt=jpeg]]></PicUrl>\n" +
+                "      <Url><![CDATA[https://mp.weixin.qq.com/s/J95beHEQHAwQ6U2l8XwfHA]]></Url>\n" +
+                "    </item>\n" +
+                "  </Articles>\n" +
+                "</xml>";
+    }
 }
