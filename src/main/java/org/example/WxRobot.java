@@ -28,9 +28,9 @@ public class WxRobot {
         try {
             FileInputStream inputStream = new FileInputStream("users");
             ObjectInputStream in = new ObjectInputStream(inputStream);
+            users = (Set<String>) in.readObject();
             in.close();
             inputStream.close();
-            users = (Set<String>) in.readObject();
             LOG.info("Reade users {}", users);
         } catch (Exception e) {
             LOG.warn(e.getMessage());
