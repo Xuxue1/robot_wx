@@ -85,14 +85,13 @@ public class WxRobot {
             }
         }
         RequestMessage msg = new RequestMessage(xml);
-        String user = msg.getFromUserName();
-        if (users.contains(user)) {
-            for(String regex : MessageStore.keywordResponse.keySet()) {
-                if (msg.getContent().matches(regex)) {
-                    return msg.createResponse(MessageStore.keywordResponse.get(regex));
-                }
+        for(String regex : MessageStore.keywordResponse.keySet()) {
+            if (msg.getContent().matches(regex)) {
+                return msg.createResponse(MessageStore.keywordResponse.get(regex));
             }
-        } else {
+        }
+        String user = msg.getFromUserName();
+        if (!users.contains(user)) {
             addUser(user);
             Thread.sleep(2000);
             return msg.createDefaultMessage();
