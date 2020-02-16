@@ -93,6 +93,9 @@ public class RequestMessage {
     }
 
     public String createResponse(String msg) {
+        if (msg.equals("https://mp.weixin.qq.com/s/T7ol72aZHHrXRluWXm5srA")) {
+            return createDefaultMessage();
+        }
         return "<xml>\n" +
                 "  <ToUserName><![CDATA["+getFromUserName()+"]]></ToUserName>\n" +
                 "  <FromUserName><![CDATA["+getToUserName()+"]]></FromUserName>\n" +
