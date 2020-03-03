@@ -3,25 +3,28 @@ package org.example.mode;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
-/**
- * <xml>
- *   <ToUserName><![CDATA[toUser]]></ToUserName>
- *   <FromUserName><![CDATA[FromUser]]></FromUserName>
- *   <CreateTime>123456789</CreateTime>
- *   <MsgType><![CDATA[event]]></MsgType>
- *   <Event><![CDATA[subscribe]]></Event>
- * </xml>
- */
+
 public class SubscribeMessage {
-    private static final String responseString = "来了老弟~  \n" +
-            "大学课后作业答案，可以通过底部菜单栏【课后答案】进行查阅哦。\n" +
-            "如果菜单栏里木有找到想要的答案，欢迎给资料哥留言。\n" +
+    private static final String responseString = "来了老弟！\n" +
             "\n" +
-            "--------------------------------------------------\n" +
-            "最近发现大家都在找大学教材PDF版。\n" +
-            "由于大家的专业和教材版本问题，资料哥没办法帮大家全部下载好。\n" +
-            "我把找大学课本PDF的检索方法，放到了文章里，需要的同学点击以下链接。\n" +
-            "<a href=\"https://mp.weixin.qq.com/s/T7ol72aZHHrXRluWXm5srA\">点我查看</a >";
+            "学网课，找答案，期末复习划重点\n" +
+            "有苦恼，解疑惑，人生规划怎么做\n" +
+            "统统来找资料哥！\n" +
+            "\n" +
+            "我是资料哥\uD83D\uDE0E\n" +
+            "希望能陪伴大家的大学成长！\n" +
+            "\n" +
+            "--------------------------------\n" +
+            "\n" +
+            "\uD83D\uDCA1【大学课后作业答案】\n" +
+            "戳菜单栏「课后答案」进行查阅\n" +
+            "菜单栏里找不到的，请给资料哥留言。\n" +
+            "\n" +
+            "\uD83D\uDCA1【大学教材PDF电子版】\n" +
+            "由于大家的专业和教材版本问题\n" +
+            "资料哥没办法帮大家全部下载\n" +
+            "但我把找大学课本PDF的检索方法，放到了文章里，需要的同学点击以下链接\uD83D\uDC47\n" +
+            "https://mp.weixin.qq.com/s/T7ol72aZHHrXRluWXm5srA";
 
 
     private String ToUserName;
